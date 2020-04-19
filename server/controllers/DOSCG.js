@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const redis = require('redis');
 
 const abc  = require('../models/DOSCG');
-require('dotenv').config('../../.env');
+require('dotenv').config('./.env');
 
 const router = express.Router();
 const app = express();
