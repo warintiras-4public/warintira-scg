@@ -19,81 +19,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/direction', cache, getDirection);
+router.get('/abc', findAandC);
+router.get('/xyz', findXYZ);
 
-router.get('/xyz', (req, res) => {
-    const xyz = [
-        { val: "X" }, 
-        { val: "Y" }, 
-        { val: 5 },  
-        { val: 9 }, 
-        { val: 15 }, 
-        { val: 23 }, 
-        { val: "Z" }
-    ];
-
-    //  Y - X  is  0
-    //  5 - Y  is  2
-    //  9 - 5  is  4
-    // 15 - 9  is  6
-    // 23 - 15 is  8
-    //  Z - 23 is 10
-
-    let arr= [];
-    for (i = 0; i < xyz.length; i++) {
-        if (i > 0) {
-            arr[i]  = xyz[i+1]-(i*2) ;
-        } 
-        // else {
-        //     arr[i] = 0;
-        // }
-    }
-
-    // let arr= [];
-    // for (i = 0; i < myArray.length; i++) {
-        // text += cars[i] + "<br>";
-    //    if (isNan(myArray[i])) {
-        // arr[i] 
-    //    }
-
-    // const five = xyz.find(x => x.val === 5).value;
-    // const nine = xyz.find(x => x.val === 9).value;
-    // const fifteen = xyz.find(x => x.val === 15).value;
-    // const twentythree = xyz.find(x => x.val === 23).value;
-
-    // let arr= [];
-    // for (i = 0; i < myArray.length; i++) {
-        // text += cars[i] + "<br>";
-    //    if (isNan(myArray[i])) {
-        // arr[i] 
-    //    }
-
-        // arr[i] = myArray[];
-    // }
-    
-    // const xyz = [
-    //     { key: 0, value: "X" },
-    //     { key: 1, value: "Y" },
-    //     { key: 2, value: 5 },
-    //     { key: 3, value: 9 },
-    //     { key: 4, value: 15 },
-    //     { key: 5, value: 23 },
-    //     { key: 6, value: "Z" },
-    // ];
-    // const five = model.find(x => x.id === 5).value;
-    // const nine = xyz.find(x => x.value === 9).value;
-    // const fifteen = xyz.find(x => x.value === 15).value;
-    // const twentythree = xyz.find(x => x.value === 23).value;
-    
-    // const XYZ = {
-        // five: five
-        // nine: nine,
-        // fifteen: fifteen,
-        // twentythree: twentythree
-    // };
-    res.send(arr);
-});
-
-router.get('/abc', (req, res) => {
+// Find a and c
+function findAandC(req, res, next) {
     // const a = 21;
     // const ab = 23;
     // const ac = -21;
@@ -107,13 +37,17 @@ router.get('/abc', (req, res) => {
     // const c = -21-21
     const c = ac-a
 
-    const bc = { 
-        b: b,
-        c: c
-    };
+    const bc = [
+        { id: 1, b: b, c: c}
+    ];
 
     res.send(bc);
-});
+}
+
+// Find x, y, and z
+function findXYZ(req, res, next) {
+    res.send('Under construction...');
+}
 
 // Google Direction
 async function getDirection(req, res, next) {
